@@ -1,5 +1,7 @@
 import Section from './Section'
 
+const base = import.meta.env.BASE_URL
+
 export default function Contact() {
   return (
     <Section id="contact" title="Contact">
@@ -8,10 +10,9 @@ export default function Contact() {
         <a href="mailto:d.n.stroupe@gmail.com" className="underline">d.n.stroupe@gmail.com</a>
 
         <div className="mt-3">
-          <a className="underline" href="/david-stroupe.vcf" download>📇 Download vCard</a>
+          <a className="underline" href={`${base}david-stroupe.vcf`} download>📇 Download vCard</a>
         </div>
 
-        {/* Sends email via FormSubmit (no backend). Approve the first verification email they send you. */}
         <form className="grid gap-3 max-w-md mt-6"
               action="https://formsubmit.co/d.n.stroupe@gmail.com"
               method="POST">

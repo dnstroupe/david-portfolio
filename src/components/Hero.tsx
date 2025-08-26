@@ -2,6 +2,8 @@ import ThemeToggle from './ThemeToggle'
 import { motion } from 'framer-motion'
 import headshot from '../assets/headshot.png'
 
+const base = import.meta.env.BASE_URL
+
 export default function Hero() {
   return (
     <header className="pt-10 md:pt-16 bg-gradient-to-b from-sky-50 to-transparent dark:from-slate-900">
@@ -14,7 +16,7 @@ export default function Hero() {
             and secure collaboration; DoD-experienced and bootcamp-trained in full-stack JavaScript.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
-            <a className="card !p-3" href="/resume.pdf" download>⬇️ Download Résumé</a>
+            <a className="card !p-3" href={`${base}resume.pdf`} download>⬇️ Download Résumé</a>
             <a className="card !p-3 no-print" href="#" onClick={(e)=>{e.preventDefault(); window.print();}}>🖨️ Print as PDF</a>
             <a className="card !p-3" href="mailto:d.n.stroupe@gmail.com">✉️ Contact</a>
             <a className="card !p-3" href="https://github.com/dnstroupe" target="_blank" rel="noopener">GitHub</a>
