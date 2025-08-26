@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// Repo will be david-portfolio, so base is set for GitHub Pages.
+// https://vitejs.dev/config/
 export default defineConfig({
+  base: '/david-portfolio/',   // IMPORTANT for GitHub Pages
   plugins: [react()],
-  base: '/david-portfolio/',
 })
