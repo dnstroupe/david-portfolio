@@ -2,28 +2,10 @@ type Role = { company: string; role: string; location: string; dates: string; bu
 
 export const experience: Role[] = [
   {
-    company: 'FedWriters, Inc. (FWI)',
-    role: 'Administrative Operations Specialist (Administrative Assistant) — DODIN / JFHQ',
-    location: 'Fort Meade, MD',
-    dates: '2025 – Present',
-    bullets: [
-      'Provide comprehensive administrative support to Joint Force Headquarters directorates enabling seamless daily operations and clear cross-directorate communication.',
-      'Manage correspondence, visitors, and phone lines; compose and format memos, briefs, reports, and presentations.',
-      'Coordinate travel in the Defense Travel System (DTS): create authorizations and vouchers, track itineraries, and reconcile expenses.',
-      'Track and route tasks in government task management systems; monitor shared inboxes and task out assignments with clear suspense dates.',
-      'Plan and support meetings, conferences, and events: agendas, room booking, A/V setup, and distribution of read-aheads; maintain calendars, SharePoint sites, and office procedures.'
-    ],
-    tools: [
-      'Microsoft 365','Outlook','Word','Excel','PowerPoint','SharePoint','Teams',
-      'Defense Travel System (DTS)','Task Management Systems','Calendars & Scheduling',
-      'A/V Coordination','Records Management'
-    ]
-  },
-  {
     company: 'Booz Allen Hamilton',
     role: 'Lead Technologist / SharePoint Administrator',
     location: 'Annapolis Junction, MD',
-    dates: '2024 – 2025',
+    dates: '2024 – Present',
     bullets: [
       'Provided operational/product support for DISA secure mobility services to mission partners.',
       'Designed and launched SharePoint solutions with workflow automation and compliance features.',
