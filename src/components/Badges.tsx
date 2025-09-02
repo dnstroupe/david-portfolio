@@ -1,42 +1,66 @@
 import Section from './Section'
-import { badges, CREDLY_PROFILE } from '../data/badges'
+import { badges } from '../data/badges'
+import { useState } from 'react'
 
-const iconFor = (name: string) => {
-  if (/HTML/i.test(name)) return '💻'
-  if (/CSS/i.test(name)) return '🎨'
-  if (/JavaScript/i.test(name)) return '🧩'
-  if (/Git/i.test(name)) return '🔧'
-  if (/AI|Artificial Intelligence/i.test(name)) return '🧠'
-  if (/Cybersecurity/i.test(name)) return '🛡️'
-  if (/Critical Thinking/i.test(name)) return '🧭'
-  return '🏅'
+const featuredOrder = [
+  'Cyber AI Foundational',
+  'Gen AI and Prompting Essentials',
+  'Artificial Intelligence Foundational',
+  'Artificial Intelligence Enablement (AI Aware)',
+  'Introduction to Cybersecurity',
+  'Git Foundational',
+  'JavaScript Foundational',
+  'HTML Foundational',
+  'CSS Foundational',
+  'Critical Thinking Foundational',
+]
+
+function rankByFeatured(name: string) {
+  const i = featuredOrder.indexOf(name)
+  return i === -1 ? 999 : i
+}
+
+function SafeBadge({ b }: { b: (typeof badges)[number] }) {
+  const [ok, setOk] = useState(true)
+  return (
+    <a href={b.url} target="_blank" rel="noopener" className="card hover:scale-[1.01] transition">
+      <div className="flex items-center gap-4">
+        {ok ? (
+          <img
+            src={b.image}
+            alt={`${b.name} badge`}
+            width={72}
+            height={72}
+            className="w-18 h-18 rounded-full"
+            onError={() => setOk(false)}
+            loading="lazy"
+          />
+        ) : (
+          <div className="w-18 h-18 rounded-full bg-gradient-to-br from-sky-500 to-indigo-500" />
+        )}
+        <div>
+          <div className="font-semibold">{b.name}</div>
+          <div className="opacity-80 text-sm">{b.issuer}</div>
+          <div className="opacity-70 text-sm mt-1">Issued {b.issued}</div>
+        </div>
+      </div>
+    </a>
+  )
 }
 
 export default function Badges() {
+  const ordered = [...badges].sort((a, b) => {
+    const r = rankByFeatured(a.name) - rankByFeatured(b.name)
+    return r !== 0 ? r : a.name.localeCompare(b.name)
+  })
+
   return (
     <Section id="badges" title="Credly Badges">
-      <div className="mb-4">
-        <a className="underline" href={CREDLY_PROFILE} target="_blank" rel="noopener">
-          View all badges on Credly →
-        </a>
-      </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {badges.map((b,i)=> {
-          const content = (
-            <div className="card flex items-center gap-3">
-              {b.image
-                ? <img src={b.image} alt={b.name} className="w-10 h-10 rounded" />
-                : <div className="text-2xl">{iconFor(b.name)}</div>}
-              <div className="flex-1">
-                <div className="font-medium">{b.name}</div>
-                <div className="text-sm opacity-70">{b.issuer} • {b.issued}</div>
-              </div>
-            </div>
-          )
-          return b.url
-            ? <a key={i} href={b.url} target="_blank" rel="noopener">{content}</a>
-            : <div key={i}>{content}</div>
-        })}
+      <a className="underline block mb-4" href="https://www.credly.com/users/david-stroupe" target="_blank" rel="noopener">
+        View all badges on Credly →
+      </a>
+      <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
+        {ordered.map((b, i) => <SafeBadge key={i} b={b} />)}
       </div>
     </Section>
   )
