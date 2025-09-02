@@ -1,6 +1,8 @@
 export const CREDLY_PROFILE = 'https://www.credly.com/users/david-stroupe'
 
 export const badges = [
+  { name: 'Gen AI and Prompting Essentials', issuer: 'Booz Allen Hamilton', issued: 'Sep 2, 2025', url: 'https://www.credly.com/badges/d954d88d-50bf-4f4a-91e5-6d4fa0a4c655/public_url', image: 'https://images.credly.com/images/21c7b251-a3a0-479e-bb07-b142e3b7627b/image.png' },
+  { name: 'Cyber AI Foundational', issuer: 'Booz Allen Hamilton', issued: 'Sep 2, 2025', url: 'https://www.credly.com/badges/db8c34ce-cb90-4639-b796-7971f4769d17/public_url', image: 'https://images.credly.com/images/12b6f349-171c-4d01-8776-23f20cd73292/image.png' },
   { name: 'Artificial Intelligence Enablement (AI Aware)', issuer: 'Booz Allen Hamilton', issued: 'Apr 2024', url: 'https://www.credly.com/users/david-stroupe', image: 'https://images.credly.com/images/4bb166fe-3c14-486d-9bfa-4fd289f88e1f/image.png' },
   { name: 'HTML Foundational', issuer: 'Booz Allen Hamilton', issued: 'Sep 2024', url: 'https://www.credly.com/users/david-stroupe', image: 'https://images.credly.com/images/6460ab43-0895-4ad2-b112-623de560e0ea/image.png' },
   { name: 'Git Foundational', issuer: 'Booz Allen Hamilton', issued: 'Sep 2024', url: 'https://www.credly.com/users/david-stroupe', image: 'https://images.credly.com/images/899198d9-b878-497d-8a28-788000b8bbe9/image.png' },
