@@ -14,26 +14,33 @@ const featuredOrder = [
   'CSS Foundational',
   'Critical Thinking Foundational',
 ]
-
-function rankByFeatured(name: string) {
-  const i = featuredOrder.indexOf(name)
+const rank = (n: string) => {
+  const i = featuredOrder.indexOf(n)
   return i === -1 ? 999 : i
 }
-
+function withBaseIfRelative(src: string) {
+  if (/^https?:\/\//i.test(src)) return src
+  const base = import.meta.env.BASE_URL || '/'
+  return `${base.replace(/\/$/, '')}/${src.replace(/^\//, '')}`
+}
 function SafeBadge({ b }: { b: (typeof badges)[number] }) {
   const [ok, setOk] = useState(true)
+  const imgSrc = withBaseIfRelative(b.image)
   return (
     <a href={b.url} target="_blank" rel="noopener" className="card hover:scale-[1.01] transition">
       <div className="flex items-center gap-4">
         {ok ? (
           <img
-            src={b.image}
+            src={imgSrc}
             alt={`${b.name} badge`}
             width={72}
             height={72}
             className="w-18 h-18 rounded-full"
-            onError={() => setOk(false)}
             loading="lazy"
+            decoding="async"
+            referrerPolicy="no-referrer"
+            crossOrigin="anonymous"
+            onError={() => setOk(false)}
           />
         ) : (
           <div className="w-18 h-18 rounded-full bg-gradient-to-br from-sky-500 to-indigo-500" />
@@ -47,13 +54,11 @@ function SafeBadge({ b }: { b: (typeof badges)[number] }) {
     </a>
   )
 }
-
 export default function Badges() {
   const ordered = [...badges].sort((a, b) => {
-    const r = rankByFeatured(a.name) - rankByFeatured(b.name)
+    const r = rank(a.name) - rank(b.name)
     return r !== 0 ? r : a.name.localeCompare(b.name)
   })
-
   return (
     <Section id="badges" title="Credly Badges">
       <a className="underline block mb-4" href="https://www.credly.com/users/david-stroupe" target="_blank" rel="noopener">
