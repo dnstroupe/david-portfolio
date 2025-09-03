@@ -1,0 +1,4 @@
+export const embeds: string[] = [];
+embeds.push(`<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="d954d88d-50bf-4f4a-91e5-6d4fa0a4c655" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>`);
+embeds.push(`<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="db8c34ce-cb90-4639-b796-7971f4769d17" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>`);
+embeds.push(`<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="e033239a-2bd6-4f3d-aaa0-0c6f6931257f" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>`);
