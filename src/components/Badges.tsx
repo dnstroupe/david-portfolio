@@ -18,28 +18,20 @@ const rank = (n: string) => {
   const i = featuredOrder.indexOf(n)
   return i === -1 ? 999 : i
 }
-function withBaseIfRelative(src: string) {
-  if (/^https?:\/\//i.test(src)) return src
-  const base = import.meta.env.BASE_URL || '/'
-  return `${base.replace(/\/$/, '')}/${src.replace(/^\//, '')}`
-}
+
 function SafeBadge({ b }: { b: (typeof badges)[number] }) {
   const [ok, setOk] = useState(true)
-  const imgSrc = withBaseIfRelative(b.image)
   return (
     <a href={b.url} target="_blank" rel="noopener" className="card hover:scale-[1.01] transition">
       <div className="flex items-center gap-4">
         {ok ? (
           <img
-            src={imgSrc}
+            src={b.image}
             alt={`${b.name} badge`}
             width={72}
             height={72}
             className="w-18 h-18 rounded-full"
             loading="lazy"
-            decoding="async"
-            referrerPolicy="no-referrer"
-            crossOrigin="anonymous"
             onError={() => setOk(false)}
           />
         ) : (
@@ -54,18 +46,20 @@ function SafeBadge({ b }: { b: (typeof badges)[number] }) {
     </a>
   )
 }
+
 export default function Badges() {
-  const ordered = [...badges].sort((a, b) => {
+  const ordered = [...badges].sort((a,b) => {
     const r = rank(a.name) - rank(b.name)
     return r !== 0 ? r : a.name.localeCompare(b.name)
   })
+
   return (
     <Section id="badges" title="Credly Badges">
       <a className="underline block mb-4" href="https://www.credly.com/users/david-stroupe" target="_blank" rel="noopener">
         View all badges on Credly →
       </a>
       <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
-        {ordered.map((b, i) => <SafeBadge key={i} b={b} />)}
+        {ordered.map((b,i) => <SafeBadge key={i} b={b} />)}
       </div>
     </Section>
   )
